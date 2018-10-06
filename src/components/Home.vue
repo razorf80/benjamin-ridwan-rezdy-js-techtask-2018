@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="onClick">
+  <button class="btn-lunch" v-on:click="onClick">
     What's for lunch
   </button>
 </template>
@@ -14,3 +14,18 @@ export default {
   }
 }
 </script>
+
+<style>
+  .btn-lunch {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+  }
+</style>

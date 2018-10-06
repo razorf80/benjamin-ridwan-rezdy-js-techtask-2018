@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="recipe-grid">
     <div 
+      class="recipe-card"
       v-for="recipe in recipesAvailable"
       :key="recipe.title">
       <h3>{{recipe.title}}</h3>
@@ -30,3 +31,23 @@ export default {
   }
 }
 </script>
+
+<style>
+  .recipe-grid{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  h3{
+    font-size: 16px;
+  }
+  .recipe-card {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    flex-grow:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+</style>
