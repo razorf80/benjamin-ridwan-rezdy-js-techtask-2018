@@ -1,6 +1,9 @@
 // getters.spec.js
 import { expect } from 'chai'
-import { getters } from './chef'
+import { getters, mutations, actions } from './chef'
+import moxios from 'moxios'
+import sinon from 'sinon'
+import kitchen from '../../api/kitchen'
 
 const state = {
   recipes: [
@@ -107,5 +110,38 @@ describe('getters', () => {
     expect(result[3].title).to.equal("Mushroom3 Toastie");
     expect(result[4].title).to.equal("Cheese Toastie");
     expect(result[5].title).to.equal("Cheese1 Toastie");
+  })
+
+  it('should set the recipes', () => {
+    
+    const testState = {
+      recipes: [],
+      ingredients: []
+    };
+
+    const recipes = [{title:'Fish And Chips'}];
+    const ingredients = [{name:'Fish'}];
+
+    mutations.setRecipes(testState,recipes);
+    expect(testState.recipes).to.equal(recipes);
+
+    mutations.setIngredients(testState,ingredients);
+    expect(testState.ingredients).to.equal(ingredients);
+  })
+
+  it('should set the state on get available recipes', () => {
+    
+    var testState = {
+      recipes: [],
+      ingredients: []
+    };
+
+    let stub = sinon.stub(kitchen, 'getAvailable')
+    //stub.resolves([{label:'a'}],[{item:'v'}])
+
+    let mockCommit = sinon.spy()
+    
+    actions.getAvailableFood({commit:mockCommit}, testState)
+    expect(stub.called).to.equal(true);
   })
 })

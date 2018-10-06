@@ -5,7 +5,7 @@ const getRecipes = () => {
 }
 
 const getIngredients = () => {
-  return axios.get('http://localhost:8080/ingredients1.json');
+  return axios.get('http://localhost:8080/ingredients.json');
 }
 
 

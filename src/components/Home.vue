@@ -7,6 +7,13 @@
 <script>
 export default {
   name: 'Home',
+
+  props: {
+    callMe: {
+      onClick: Function
+    }
+  },
+
   methods:{
     onClick: function(){
       this.$router.push({path:'/recipes'})

@@ -38,7 +38,7 @@ export const getters = {
 }
 
 // actions
-const actions = {
+export const actions = {
   getAvailableFood ({ commit }) {
     kitchen.getAvailable((recipes, ingredients) => {
       commit('setRecipes', recipes)
@@ -48,7 +48,7 @@ const actions = {
 }
 
 // mutations
-const mutations = {
+export const mutations = {
   setRecipes (state, recipes) {
     state.recipes = recipes
   },
