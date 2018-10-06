@@ -3,7 +3,14 @@
     <div 
       v-for="recipe in recipesAvailable"
       :key="recipe.title">
-      {{recipe.title}}
+      <h3>{{recipe.title}}</h3>
+      <ul>
+        <li 
+          v-for="ingredient in recipe.ingredients"
+          :key="ingredient">
+          {{ingredient}}
+        </li>
+      </ul>
     </div>
   </div>
 </template>

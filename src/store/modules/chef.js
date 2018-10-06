@@ -7,9 +7,33 @@ const state = {
 }
 
 // getters
-const getters = {
-  recipesAvailable: (state) => {
-    return state.recipes;
+export const getters = {
+  
+  ingredientsAvailable: (state) => {
+    return state.ingredients.reduce((obj,ingredient) => {
+      const useBy = new Date(ingredient['use-by']);
+      if( useBy > Date.now() )obj[ingredient.title] = ingredient;
+      return obj;
+    }, {});
+  },
+  recipesAvailable: (state, getters) => {
+    const ingredientsObj = getters.ingredientsAvailable;
+    return state.recipes
+      .filter((recipe)=>{
+        recipe.passBestBefore=false
+        return recipe.ingredients.every((ingredient) => {
+          let ingredientInfo = ingredientsObj[ingredient];
+          if(ingredientInfo){
+            let bestBefore = new Date(ingredientInfo['best-before']);
+            if(Date.now() > bestBefore)recipe.passBestBefore = true;
+          }
+          return ingredientInfo !== undefined;
+        })
+      })
+      .sort((a,b) => {
+        if(a.passBestBefore && !b.passBestBefore) return 1;
+        return -1;
+      });
   },
 }
 
@@ -20,7 +44,7 @@ const actions = {
       commit('setRecipes', recipes)
       commit('setIngredients', ingredients)
     })
-  }
+  },
 }
 
 // mutations
