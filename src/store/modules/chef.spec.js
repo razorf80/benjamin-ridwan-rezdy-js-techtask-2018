@@ -13,8 +13,24 @@ const state = {
       "ingredients":["Cheese"]
     },
     {
+      "title":"Cheese1 Toastie",
+      "ingredients":["Cheese1"]
+    },
+    {
       "title":"Mushroom Toastie",
       "ingredients":["Mushroom"]
+    },
+    {
+      "title":"Mushroom1 Toastie",
+      "ingredients":["Mushroom1"]
+    },
+    {
+      "title":"Mushroom2 Toastie",
+      "ingredients":["Mushroom2"]
+    },
+    {
+      "title":"Mushroom3 Toastie",
+      "ingredients":["Mushroom3"]
     },
   ],
   ingredients: [
@@ -29,7 +45,27 @@ const state = {
       "use-by":"2018-10-17"
     },
     {  
+      "title":"Cheese1",
+      "best-before":"2017-09-1",
+      "use-by":"2018-10-17"
+    },
+    {  
       "title":"Mushroom",
+      "best-before":"2018-10-12",
+      "use-by":"2018-10-017"
+    },
+    {  
+      "title":"Mushroom1",
+      "best-before":"2018-10-12",
+      "use-by":"2018-10-017"
+    },
+    {  
+      "title":"Mushroom2",
+      "best-before":"2018-10-12",
+      "use-by":"2018-10-017"
+    },
+    {  
+      "title":"Mushroom3",
       "best-before":"2018-10-12",
       "use-by":"2018-10-017"
     },
@@ -64,8 +100,12 @@ describe('getters', () => {
     const result = getters.recipesAvailable(state, {ingredientsAvailable})
 
     // assert the result
-    expect(result.length).to.equal(2);
+    expect(result.length).to.equal(6);
     expect(result[0].title).to.equal("Mushroom Toastie");
-    expect(result[1].title).to.equal("Cheese Toastie");
+    expect(result[1].title).to.equal("Mushroom1 Toastie");
+    expect(result[2].title).to.equal("Mushroom2 Toastie");
+    expect(result[3].title).to.equal("Mushroom3 Toastie");
+    expect(result[4].title).to.equal("Cheese Toastie");
+    expect(result[5].title).to.equal("Cheese1 Toastie");
   })
 })
