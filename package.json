@@ -9,7 +9,6 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@vue/test-utils": "^1.0.0-beta.25",
     "axios": "^0.18.0",
     "chai": "^4.2.0",
     "sinon": "^6.3.5",
