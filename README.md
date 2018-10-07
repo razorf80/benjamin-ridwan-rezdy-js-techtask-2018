@@ -2,25 +2,26 @@
 
 ## Project setup
 ```
-yarn install
+yarn
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+yarn build
 ```
 
 ### Run your tests
 ```
-yarn run test
+yarn test
 ```
 
-### Lints and fixes files
+### To run with docker use the following command
 ```
-yarn run lint
+docker build -t [tagname] .
+docker run -it -p 8080:80 --rm --name [name] [tagname]
 ```

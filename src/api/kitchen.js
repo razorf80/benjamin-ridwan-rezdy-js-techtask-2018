@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const getRecipes = () => {
-  return axios.get('http://localhost:8080/recipes.json');
+  return axios.get('/recipes.json');
 }
 
 const getIngredients = () => {
-  return axios.get('http://localhost:8080/ingredients.json');
+  return axios.get('/ingredients.json');
 }
 
 

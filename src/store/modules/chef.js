@@ -1,4 +1,5 @@
 import kitchen from '../../api/kitchen'
+import {todayDate} from '../../util/Date'
 
 // initial state
 const state = {
@@ -12,7 +13,7 @@ export const getters = {
   ingredientsAvailable: (state) => {
     return state.ingredients.reduce((obj,ingredient) => {
       const useBy = new Date(ingredient['use-by']);
-      if( useBy > Date.now() )obj[ingredient.title] = ingredient;
+      if( useBy >= todayDate() )obj[ingredient.title] = ingredient;
       return obj;
     }, {});
   },
@@ -25,7 +26,7 @@ export const getters = {
           let ingredientInfo = ingredientsObj[ingredient];
           if(ingredientInfo){
             let bestBefore = new Date(ingredientInfo['best-before']);
-            if(Date.now() > bestBefore)recipe.passBestBefore = true;
+            if(todayDate() > bestBefore)recipe.passBestBefore = true;
           }
           return ingredientInfo !== undefined;
         })

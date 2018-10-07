@@ -1,9 +1,9 @@
 // getters.spec.js
 import { expect } from 'chai'
 import { getters, mutations, actions } from './chef'
-import moxios from 'moxios'
 import sinon from 'sinon'
 import kitchen from '../../api/kitchen'
+import {todayDate} from '../../util/Date'
 
 const state = {
   recipes: [
@@ -54,23 +54,23 @@ const state = {
     },
     {  
       "title":"Mushroom",
-      "best-before":"2018-10-12",
-      "use-by":"2018-10-017"
+      "best-before":"2018-10-06",
+      "use-by":"2018-10-07"
     },
     {  
       "title":"Mushroom1",
       "best-before":"2018-10-12",
-      "use-by":"2018-10-017"
+      "use-by":"2018-10-17"
     },
     {  
       "title":"Mushroom2",
       "best-before":"2018-10-12",
-      "use-by":"2018-10-017"
+      "use-by":"2018-10-17"
     },
     {  
       "title":"Mushroom3",
       "best-before":"2018-10-12",
-      "use-by":"2018-10-017"
+      "use-by":"2018-10-17"
     },
   ]
 }
@@ -79,6 +79,7 @@ const realDateNow = Date.now.bind(global.Date);
 
 describe('getters', () => {
   beforeAll(() => {
+    //test date is 06/10/2018
     const dateNowStub = jest.fn(() => 1538793743715);
     global.Date.now = dateNowStub;
   })
@@ -93,6 +94,7 @@ describe('getters', () => {
 
     // assert the result
     expect(result['Cheese']).to.exist;
+    expect(result['Mushroom']).to.exist;
     expect(result['Ham']).to.not.exist;
   })
 

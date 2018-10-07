@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import Home from './Home'
-import sinon from 'sinon'
 
 describe('Counter', () => {
   // Now mount the component and you have the wrapper
